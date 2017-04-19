@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.slugify.slugify">
+            function <span class="apidocSignatureSpan"></span>slugify
+            <span class="apidocSignatureSpan">(string, replacement)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.slugify.extend">
             function <span class="apidocSignatureSpan">slugify.</span>extend
             <span class="apidocSignatureSpan">(customMap)</span>
@@ -76,6 +85,35 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.slugify" id="apidoc.module.slugify">module slugify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.slugify.slugify" id="apidoc.element.slugify.slugify">
+        function <span class="apidocSignatureSpan"></span>slugify
+        <span class="apidocSignatureSpan">(string, replacement)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function replace(string, replacement) {
+  return string.split(&#x27;&#x27;).reduce(function (result, ch) {
+    if (charMap[ch]) {
+      ch = charMap[ch]
+    }
+    // allowed
+    ch = ch.replace(/[^\w\s$*_+~.()&#x27;&#x22;!\-:@]/g, &#x27;&#x27;)
+    result += ch
+    return result
+  }, &#x27;&#x27;)
+    // trim leading/trailing spaces
+    .replace(/^\s+|\s+$/g, &#x27;&#x27;)
+    // convert spaces
+    .replace(/[-\s]+/g, replacement || &#x27;-&#x27;)
+    // remove trailing separator
+    .replace(&#x27;#{replacement}$&#x27;, &#x27;&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
